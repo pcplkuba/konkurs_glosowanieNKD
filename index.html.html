@@ -7,14 +7,14 @@
 body { font-family: Arial, sans-serif; margin: 30px; }
 h1 { color: #2a7f62; }
 label { display:block; margin-top:10px; }
-.star-rating { display: flex; justify-content: center; flex-direction: column; align-items: center; margin-bottom: 5px; }
-.stars { display: flex; flex-direction: row-reverse; justify-content: center; }
+.star-rating { display: flex; justify-content: center; flex-direction: column; align-items: center; margin-bottom: 10px; }
+.stars { display: flex; flex-direction: row-reverse; justify-content: space-between; width: 200px; }
 .stars input { display: none; }
-.stars label { font-size: 24px; color: #ccc; cursor: pointer; padding: 0 2px; }
+.stars label { font-size: 36px; color: #ccc; cursor: pointer; padding: 0 5px; }
 .stars input:checked ~ label, .stars label:hover, .stars label:hover ~ label { color: gold; }
-.points-labels { display: flex; justify-content: center; width: 100%; margin-top: 2px; }
-.points-labels span { width: 24px; text-align: center; font-size: 14px; }
-.valueDisplay { margin-left: 10px; font-weight: bold; }
+.points-labels { display: flex; justify-content: space-between; width: 200px; margin-top: 5px; }
+.points-labels span { text-align: center; font-size: 16px; }
+.valueDisplay { margin-top: 5px; font-weight: bold; }
 select { padding: 5px; margin-bottom: 20px; }
 button { margin-top: 20px; padding: 10px 15px; }
 table { margin-top: 20px; border-collapse: collapse; width: 100%; }
@@ -93,7 +93,6 @@ fieldset { margin-top: 20px; padding: 10px; }
     <p>Suma: <span id="starterSum">0</span></p>
   </fieldset>
 
-  <!-- Analogicznie dla dania głównego -->
   <fieldset>
     <legend>Danie główne</legend>
     <div>
@@ -110,6 +109,7 @@ fieldset { margin-top: 20px; padding: 10px; }
         <span class="valueDisplay">0</span>
       </div>
     </div>
+
     <div>
       <span>Wygląd potrawy (0-5):</span>
       <div class="star-rating" data-max="5">
@@ -126,6 +126,7 @@ fieldset { margin-top: 20px; padding: 10px; }
         <span class="valueDisplay">0</span>
       </div>
     </div>
+
     <div>
       <span>Związek z regionem (0-8):</span>
       <div class="star-rating" data-max="8">
@@ -145,6 +146,7 @@ fieldset { margin-top: 20px; padding: 10px; }
         <span class="valueDisplay">0</span>
       </div>
     </div>
+
     <p>Suma: <span id="mainSum">0</span></p>
   </fieldset>
 
@@ -191,14 +193,8 @@ function updateSums() {
   updateDisplay(starterRatings);
   updateDisplay(mainRatings);
   let starterSum = 0, mainSum = 0;
-  starterRatings.forEach(div => {
-    const val = parseInt(div.querySelector('input:checked')?.value) || 0;
-    starterSum += val;
-  });
-  mainRatings.forEach(div => {
-    const val = parseInt(div.querySelector('input:checked')?.value) || 0;
-    mainSum += val;
-  });
+  starterRatings.forEach(div => { starterSum += parseInt(div.querySelector('input:checked')?.value)||0; });
+  mainRatings.forEach(div => { mainSum += parseInt(div.querySelector('input:checked')?.value)||0; });
   starterSumEl.textContent = starterSum;
   mainSumEl.textContent = mainSum;
   totalSumEl.textContent = starterSum + mainSum;
