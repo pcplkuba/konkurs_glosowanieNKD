@@ -6,20 +6,24 @@
 <style>
 body { font-family: Arial, sans-serif; margin: 30px; }
 h1 { color: #2a7f62; }
-label { display:block; margin-top:10px; }
+label { display:block; margin-top:10px; font-size: 1.2em; }
+select { padding: 10px; margin-bottom: 20px; font-size: 1.2em; }
+button { margin-top: 20px; padding: 15px 20px; font-size: 1.2em; background-color: #aee1ff; border: none; border-radius: 5px; cursor: pointer; }
+button:hover { background-color: #81c8ff; }
 .star-rating { display: flex; justify-content: center; flex-direction: column; align-items: center; margin-bottom: 10px; }
-.stars { display: flex; flex-direction: row-reverse; justify-content: space-between; width: 200px; }
+.stars { display: flex; justify-content: center; gap: 25px; } /* większy odstęp i wyśrodkowanie */
 .stars input { display: none; }
-.stars label { font-size: 36px; color: #ccc; cursor: pointer; padding: 0 5px; }
+.stars label { font-size: 48px; color: #ccc; cursor: pointer; }
 .stars input:checked ~ label, .stars label:hover, .stars label:hover ~ label { color: gold; }
-.points-labels { display: flex; justify-content: space-between; width: 200px; margin-top: 5px; }
-.points-labels span { text-align: center; font-size: 16px; }
+.points-labels { display: flex; justify-content: center; gap: 25px; margin-top: 5px; }
+.points-labels span { text-align: center; font-size: 18px; display: inline-block; width: 48px; }
 .valueDisplay { margin-top: 5px; font-weight: bold; }
-select { padding: 5px; margin-bottom: 20px; }
-button { margin-top: 20px; padding: 10px 15px; }
 table { margin-top: 20px; border-collapse: collapse; width: 100%; }
 th, td { border:1px solid #999; padding:5px; text-align:center; }
 fieldset { margin-top: 20px; padding: 10px; }
+@media (max-width: 600px) {
+  select, button { font-size: 1.4em; padding: 15px; }
+}
 </style>
 </head>
 <body>
@@ -67,20 +71,19 @@ fieldset { margin-top: 20px; padding: 10px; }
       <span>Związek z regionem (0-8):</span>
       <div class="star-rating" data-max="8">
         <div class="stars">
-          <input type="radio" name="starterRegion" value="8" id="sReg8"><label for="sReg8">★</label>
-          <input type="radio" name="starterRegion" value="7" id="sReg7"><label for="sReg7">★</label>
-          <input type="radio" name="starterRegion" value="6" id="sReg6"><label for="sReg6">★</label>
-          <input type="radio" name="starterRegion" value="5" id="sReg5"><label for="sReg5">★</label>
-          <input type="radio" name="starterRegion" value="4" id="sReg4"><label for="sReg4">★</label>
-          <input type="radio" name="starterRegion" value="3" id="sReg3"><label for="sReg3">★</label>
-          <input type="radio" name="starterRegion" value="2" id="sReg2"><label for="sReg2">★</label>
-          <input type="radio" name="starterRegion" value="1" id="sReg1"><label for="sReg1">★</label>
+          <input type="radio" name="starterRegion" value="8" id="sRegion8"><label for="sRegion8">★</label>
+          <input type="radio" name="starterRegion" value="7" id="sRegion7"><label for="sRegion7">★</label>
+          <input type="radio" name="starterRegion" value="6" id="sRegion6"><label for="sRegion6">★</label>
+          <input type="radio" name="starterRegion" value="5" id="sRegion5"><label for="sRegion5">★</label>
+          <input type="radio" name="starterRegion" value="4" id="sRegion4"><label for="sRegion4">★</label>
+          <input type="radio" name="starterRegion" value="3" id="sRegion3"><label for="sRegion3">★</label>
+          <input type="radio" name="starterRegion" value="2" id="sRegion2"><label for="sRegion2">★</label>
+          <input type="radio" name="starterRegion" value="1" id="sRegion1"><label for="sRegion1">★</label>
         </div>
         <div class="points-labels"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></div>
         <span class="valueDisplay">0</span>
       </div>
     </div>
-    <p>Suma: <span id="starterSum">0</span></p>
   </fieldset>
 
   <fieldset>
@@ -115,23 +118,21 @@ fieldset { margin-top: 20px; padding: 10px; }
       <span>Związek z regionem (0-8):</span>
       <div class="star-rating" data-max="8">
         <div class="stars">
-          <input type="radio" name="mainRegion" value="8" id="mReg8"><label for="mReg8">★</label>
-          <input type="radio" name="mainRegion" value="7" id="mReg7"><label for="mReg7">★</label>
-          <input type="radio" name="mainRegion" value="6" id="mReg6"><label for="mReg6">★</label>
-          <input type="radio" name="mainRegion" value="5" id="mReg5"><label for="mReg5">★</label>
-          <input type="radio" name="mainRegion" value="4" id="mReg4"><label for="mReg4">★</label>
-          <input type="radio" name="mainRegion" value="3" id="mReg3"><label for="mReg3">★</label>
-          <input type="radio" name="mainRegion" value="2" id="mReg2"><label for="mReg2">★</label>
-          <input type="radio" name="mainRegion" value="1" id="mReg1"><label for="mReg1">★</label>
+          <input type="radio" name="mainRegion" value="8" id="mRegion8"><label for="mRegion8">★</label>
+          <input type="radio" name="mainRegion" value="7" id="mRegion7"><label for="mRegion7">★</label>
+          <input type="radio" name="mainRegion" value="6" id="mRegion6"><label for="mRegion6">★</label>
+          <input type="radio" name="mainRegion" value="5" id="mRegion5"><label for="mRegion5">★</label>
+          <input type="radio" name="mainRegion" value="4" id="mRegion4"><label for="mRegion4">★</label>
+          <input type="radio" name="mainRegion" value="3" id="mRegion3"><label for="mRegion3">★</label>
+          <input type="radio" name="mainRegion" value="2" id="mRegion2"><label for="mRegion2">★</label>
+          <input type="radio" name="mainRegion" value="1" id="mRegion1"><label for="mRegion1">★</label>
         </div>
         <div class="points-labels"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></div>
         <span class="valueDisplay">0</span>
       </div>
     </div>
-    <p>Suma: <span id="mainSum">0</span></p>
   </fieldset>
 
-  <p>Łączna ilość punktów: <span id="totalSum">0</span></p>
   <button type="submit">Dodaj ocenę</button>
 </form>
 
@@ -140,9 +141,9 @@ fieldset { margin-top: 20px; padding: 10px; }
   <thead>
     <tr>
       <th>Uczestnik</th>
-      <th>Przystawka/ Zupa Średnia</th>
-      <th>Danie główne Średnia</th>
-      <th>Łączna średnia</th>
+      <th>Kategoria</th>
+      <th>Suma punktów</th>
+      <th>Średnia</th>
       <th>Liczba ocen</th>
     </tr>
   </thead>
@@ -152,70 +153,74 @@ fieldset { margin-top: 20px; padding: 10px; }
 <script>
 const participants = ["Uczestnik 1", "Uczestnik 2", "Uczestnik 3"];
 const starterScores = {}, mainScores = {}, votes = {};
-participants.forEach(p => { starterScores[p]=0; mainScores[p]=0; votes[p]=0; });
+participants.forEach(p => { starterScores[p]={taste:0, look:0, region:0}; mainScores[p]={taste:0, look:0, region:0}; votes[p]=0; });
 
 const form = document.getElementById("voteForm");
 const tableBody = document.querySelector("#results tbody");
-const starterRatings = document.querySelectorAll("fieldset:nth-of-type(1) .star-rating");
-const mainRatings = document.querySelectorAll("fieldset:nth-of-type(2) .star-rating");
-const starterSumEl = document.getElementById("starterSum");
-const mainSumEl = document.getElementById("mainSum");
-const totalSumEl = document.getElementById("totalSum");
+
+function getRatings(fieldsetLegend) {
+  const fieldset = Array.from(document.querySelectorAll('fieldset')).find(f => f.querySelector('legend').textContent === fieldsetLegend);
+  return fieldset ? fieldset.querySelectorAll('.star-rating') : [];
+}
 
 function updateDisplay(ratings) {
   ratings.forEach(div => {
     const checked = div.querySelector('input:checked');
     const value = checked ? parseInt(checked.value) : 0;
-    div.querySelector('.valueDisplay').textContent = value;
+    const valueDisplay = div.querySelector('.valueDisplay');
+    if(valueDisplay) valueDisplay.textContent = value;
   });
 }
 
 function updateSums() {
-  updateDisplay(starterRatings);
-  updateDisplay(mainRatings);
-  let starterSum = 0, mainSum = 0;
-  starterRatings.forEach(div => { starterSum += parseInt(div.querySelector('input:checked')?.value)||0; });
-  mainRatings.forEach(div => { mainSum += parseInt(div.querySelector('input:checked')?.value)||0; });
-  starterSumEl.textContent = starterSum;
-  mainSumEl.textContent = mainSum;
-  totalSumEl.textContent = starterSum + mainSum;
+  updateDisplay(getRatings('Przystawka / zupa'));
+  updateDisplay(getRatings('Danie główne'));
 }
 
-starterRatings.forEach(div => div.addEventListener('change', updateSums));
-mainRatings.forEach(div => div.addEventListener('change', updateSums));
-
 function updateTable() {
-  const sorted = participants.slice().sort((a,b) => (starterScores[b]+mainScores[b])-(starterScores[a]+mainScores[a]));
-  tableBody.innerHTML = "";
-  sorted.forEach(p => {
-    const starterAvg = votes[p] ? (starterScores[p]/votes[p]).toFixed(2) : 0;
-    const mainAvg = votes[p] ? (mainScores[p]/votes[p]).toFixed(2) : 0;
-    const totalAvg = votes[p] ? ((starterScores[p]+mainScores[p])/votes[p]).toFixed(2) : 0;
+  tableBody.innerHTML = '';
+  participants.forEach(p => {
     const count = votes[p];
-    const row = document.createElement("tr");
-    row.innerHTML = `<td>${p}</td><td>${starterAvg}</td><td>${mainAvg}</td><td>${totalAvg}</td><td>${count}</td>`;
-    tableBody.appendChild(row);
+    const starterTotal = starterScores[p].taste + starterScores[p].look + starterScores[p].region;
+    const mainTotal = mainScores[p].taste + mainScores[p].look + mainScores[p].region;
+    const starterAvg = count ? (starterTotal / count).toFixed(2) : 0;
+    const mainAvg = count ? (mainTotal / count).toFixed(2) : 0;
+
+    const rowParticipant = document.createElement('tr');
+    rowParticipant.innerHTML = `<td rowspan="2">${p}</td><td>Przystawka / zupa</td><td>${starterTotal}</td><td>${starterAvg}</td><td rowspan="2">${count}</td>`;
+    tableBody.appendChild(rowParticipant);
+
+    const rowMain = document.createElement('tr');
+    rowMain.innerHTML = `<td>Danie główne</td><td>${mainTotal}</td><td>${mainAvg}</td>`;
+    tableBody.appendChild(rowMain);
   });
 }
 
-form.addEventListener("submit", e => {
+form.addEventListener('submit', e => {
   e.preventDefault();
-  const participant = document.getElementById("participantSelect").value;
-  if (!participant) { alert("Wybierz uczestnika!"); return; }
+  const participantSelect = document.getElementById('participantSelect');
+  if(!participantSelect) return;
+  const participant = participantSelect.value;
+  if (!participant) { alert('Wybierz uczestnika!'); return; }
 
-  let starterSum = 0, mainSum = 0;
-  starterRatings.forEach(div => { starterSum += parseInt(div.querySelector('input:checked')?.value)||0; });
-  mainRatings.forEach(div => { mainSum += parseInt(div.querySelector('input:checked')?.value)||0; });
+  const starterRatings = getRatings('Przystawka / zupa');
+  starterScores[participant].taste += parseInt(starterRatings[0].querySelector('input:checked')?.value) || 0;
+  starterScores[participant].look += parseInt(starterRatings[1].querySelector('input:checked')?.value) || 0;
+  starterScores[participant].region += parseInt(starterRatings[2].querySelector('input:checked')?.value) || 0;
 
-  starterScores[participant] += starterSum;
-  mainScores[participant] += mainSum;
-  votes[participant] += 1;
+  const mainRatings = getRatings('Danie główne');
+  mainScores[participant].taste += parseInt(mainRatings[0].querySelector('input:checked')?.value) || 0;
+  mainScores[participant].look += parseInt(mainRatings[1].querySelector('input:checked')?.value) || 0;
+  mainScores[participant].region += parseInt(mainRatings[2].querySelector('input:checked')?.value) || 0;
 
-  starterRatings.forEach(div => div.querySelectorAll('input').forEach(i => i.checked = false));
-  mainRatings.forEach(div => div.querySelectorAll('input').forEach(i => i.checked = false));
+  starterRatings.forEach(div => div.querySelectorAll('input').forEach(i => i.checked=false));
+  mainRatings.forEach(div => div.querySelectorAll('input').forEach(i => i.checked=false));
+
   updateSums();
   updateTable();
 });
+
+updateSums();
 updateTable();
 </script>
 
